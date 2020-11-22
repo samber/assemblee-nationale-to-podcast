@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  worker:
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - ./screenshot/:/tmp/screenshot
+    env_file:
+      - .env
+    restart: unless-stopped

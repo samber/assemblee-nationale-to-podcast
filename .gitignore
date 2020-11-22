@@ -149,3 +149,4 @@ dmypy.json
 # custom @samber
 #
 .env
+screenshot
