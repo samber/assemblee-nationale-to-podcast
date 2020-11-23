@@ -56,7 +56,6 @@ async def run_job():
             if 'timmmed_local_file' in video:
                 os.remove(video['timmmed_local_file'])
 
-        
         time.sleep(10*60)   # 10 minutes
 
 

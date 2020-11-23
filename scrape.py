@@ -25,6 +25,10 @@ def list_last_commissions():
 def get_commission_details(path):
     html = do_req('http://videos.assemblee-nationale.fr/' + path)
 
+    # stop scraping if it's a live video
+    if len(html.select('meta[itemprop=contentURL]')) == 0
+        return None
+
     name = html.select('meta[itemprop=name]')[0].attrs['content']
     thumbnailUrl = html.select('meta[itemprop=thumbnailUrl]')[0].attrs['content']
     contentURL = html.select('meta[itemprop=contentURL]')[0].attrs['content']
@@ -39,9 +43,16 @@ def get_commission_details(path):
 
 def list_all_commissions_with_details(since=None):
     paths = list_last_commissions()
-    details = list(map(lambda path: get_commission_details(path), paths))
+    paths.reverse() # reverse order: oldest to newest
 
-    details.reverse()
+    # get full details for each commission
+    details = []
+    for path in paths:
+        detail = get_commission_details(path)
+        # if it is a live commission, then stop scraping
+        if detail is None:
+            break
+        details.append(detail)
 
     if since is None:
         return details
