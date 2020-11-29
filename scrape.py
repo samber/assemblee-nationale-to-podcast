@@ -27,6 +27,7 @@ def get_commission_details(path):
 
     # stop scraping if it's a live video
     if len(html.select('meta[itemprop=contentURL]')) == 0:
+        print('Waiting live video:', html.select('meta[itemprop=name]')[0].attrs['content'])
         return None
 
     name = html.select('meta[itemprop=name]')[0].attrs['content']

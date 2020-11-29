@@ -12,6 +12,12 @@ https://anchor.fm/assemblee-nationale
 - Upload mp3 to Anchor.fm
 - Fake http server for PaaS deployment
 
+## Todo
+
+- Add thumbnail into description
+- Add video link into description
+- Add report link into description
+
 ## Implementation notes
 
 There is no databases to keep track of uploaded videos.

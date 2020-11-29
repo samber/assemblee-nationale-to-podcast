@@ -51,10 +51,15 @@ async def run_job():
                 print(err)
                 traceback.print_exc()
 
-            if 'local_file' in video:
-                os.remove(video['local_file'])
-            if 'timmmed_local_file' in video:
-                os.remove(video['timmmed_local_file'])
+            try:
+                if 'local_file' in video:
+                    os.remove(video['local_file'])
+                if 'timmmed_local_file' in video:
+                    os.remove(video['timmmed_local_file'])
+            except Exception as err:
+                print(err)
+                traceback.print_exc()
+
 
         time.sleep(10*60)   # 10 minutes
 
